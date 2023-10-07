@@ -16,3 +16,7 @@ SilverStripe\Admin\AdminRootController:
 ```
 APP_SESSION_INCOGNITO=
 ```
+
+```
+"resources-dir": "******"
+```
