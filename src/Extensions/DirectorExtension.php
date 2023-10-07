@@ -4,6 +4,7 @@ namespace Goldfinch\Incognito\Extensions;
 
 use SilverStripe\Control\Cookie;
 use SilverStripe\Core\Extension;
+use SilverStripe\Control\Director;
 use SilverStripe\Core\Environment;
 use SilverStripe\Admin\AdminRootController;
 
@@ -30,13 +31,17 @@ class DirectorExtension extends Extension
                 $rules['Security//$Action/$ID/$OtherID'],
                 $rules['CMSSecurity//$Action/$ID/$OtherID'],
                 $rules['admin'],
-                $rules['dev'],
                 $rules['__decrypt'],
                 $rules['dev/cron/$Action'],
                 $rules['admin/cms'],
                 $rules['admin/campaigns'],
                 $rules['admin/reports'],
             );
+
+            if (Director::isLive())
+            {
+                unset($rules['dev']);
+            }
         }
     }
 }
