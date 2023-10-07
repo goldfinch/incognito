@@ -1,0 +1,22 @@
+---
+Name: goldfinch-incognito
+After:
+  - '#adminroutes'
+---
+SilverStripe\Control\Director:
+  rules:
+    'admin': ''
+  extensions:
+    - Goldfinch\Incognito\Extensions\DirectorExtension
+
+SilverStripe\Security\Member:
+  extensions:
+    - Goldfinch\Incognito\Extensions\MemberExtension
+
+SilverStripe\Security\Security:
+  extensions:
+    - Goldfinch\Incognito\Extensions\SecurityExtension
+
+SilverStripe\Security\MemberAuthenticator\LogoutHandler:
+  extensions:
+    - Goldfinch\Incognito\Extensions\LogoutHandlerExtension
