@@ -32,15 +32,15 @@ class DirectorExtension extends Extension
                 $rules['CMSSecurity//$Action/$ID/$OtherID'],
                 $rules['admin'],
                 $rules['__decrypt'],
-                $rules['dev/cron/$Action'],
                 $rules['admin/cms'],
                 $rules['admin/campaigns'],
                 $rules['admin/reports'],
             );
 
-            if (Director::isLive())
+            if (Director::isLive() && Director::is_cli() === false)
             {
                 unset($rules['dev']);
+              	unset($rules['dev/cron/$Action']);
             }
         }
     }
