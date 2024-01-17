@@ -1,11 +1,11 @@
 ---
 Name: goldfinch-incognito
 After:
-  - '#adminroutes'
+  - "#adminroutes"
 ---
 SilverStripe\Control\Director:
   rules:
-    'admin': ''
+    "admin": ""
   extensions:
     - Goldfinch\Incognito\Extensions\DirectorExtension
 

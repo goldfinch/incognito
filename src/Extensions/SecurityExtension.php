@@ -16,9 +16,8 @@ class SecurityExtension extends Extension
 
     public function onBeforeSecurityLogin()
     {
-        if (!Security::getCurrentUser())
-        {
-          	// Cookie::set(Environment::getEnv('APP_SESSION_INCOGNITO'), false); // null
+        if (!Security::getCurrentUser()) {
+            // Cookie::set(Environment::getEnv('APP_SESSION_INCOGNITO'), false); // null
         }
     }
 }

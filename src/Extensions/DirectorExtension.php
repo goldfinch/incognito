@@ -19,13 +19,14 @@ class DirectorExtension extends Extension
 
         // $rules = [Environment::getEnv('SS_ADMIN_INCOGNITO') => 'SilverStripe\Admin\AdminRootController'] + $rules;
 
-        if (($_SERVER['REQUEST_URI'] == '/' . $path) && !isset($_COOKIE[$sessionName]))
-        {
+        if (
+            $_SERVER['REQUEST_URI'] == '/' . $path &&
+            !isset($_COOKIE[$sessionName])
+        ) {
             Cookie::set($sessionName, 11);
         }
 
-        if (!isset($_COOKIE[$sessionName]) || $_COOKIE[$sessionName] != 11)
-        {
+        if (!isset($_COOKIE[$sessionName]) || $_COOKIE[$sessionName] != 11) {
             unset(
                 $rules['admin/graphql'],
                 $rules['Security//$Action/$ID/$OtherID'],
@@ -37,10 +38,9 @@ class DirectorExtension extends Extension
                 $rules['admin/reports'],
             );
 
-            if (Director::isLive() && Director::is_cli() === false)
-            {
+            if (Director::isLive() && Director::is_cli() === false) {
                 unset($rules['dev']);
-              	unset($rules['dev/cron/$Action']);
+                unset($rules['dev/cron/$Action']);
             }
         }
     }
